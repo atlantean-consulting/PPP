@@ -205,3 +205,12 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# extra shizz that we don't want to include
+# ... like output files and such as
+*-padded.pdf
+*-output/
+sig*.pdf
+PPPsig*.pdf
+job*.pdf
+junk/
