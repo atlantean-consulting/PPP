@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# =================================================== #
+#               This program is part of              
+#   Paul's Preponderating Prepress Package v0.777b      
+#   (CC) 2020 The Rev. Paul T. Fusco-Gessick 4.*.6  
+#                 <<paul@neroots.net>>
+
+#                I.F.E.T.  --  I.V.V.S.
+# =================================================== #
+
+f=$1
+b=${f%.pdf}
+echo "got file "$f
+echo ".PSenating ..."
+pdftops -level3 -origpagesizes $f $b.ps
+echo " ... imposing pages 4-up ..."
+pstops "4:0U(0,0)+7U(0.5w,0)+3(0,0.5h)+4(0.5w,0.5h), 4:6U(0,0)+1U(0.5w,0)+5(0,0.5h)+2(0.5w,0.5h)" $b.ps i$b.ps
+echo " ... re.PDFenating ..."
+ps2pdf i$b.ps PPP$b.pdf
+rm -f *.ps
+cowsay "and boom goes the dynamite."

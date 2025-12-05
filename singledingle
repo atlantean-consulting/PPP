@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# ================================================ #
+#   This program is part of
+#   Paul's Preponderating Prepresser v1.0
+#   (CC-BY-SA 4.0) 2025 e.v. by
+#   The Rev. Paul T. Fusco-Gessick, J.D., SDA
+#   <<paul@neroots.net>>
+
+#   I.F.E.T.  --  I.V.V.S.
+# ================================================ #
+f=$1
+b=${f%.pdf}
+echo "got file "$f
+echo ".PSenating ..."
+pdftops -level3 -origpagesizes $f $b.ps
+echo " ... rearranging pages ..."
+psbook $b.ps b$b.ps
+echo " ... imposing pages 2-up ..."
+pstops "2:0L@1.0(1w,0)+1L@1.0(1w,0.5h)" b$b.ps i$b.ps
+echo " ... re.PDFenating ..."
+ps2pdf i$b.ps PPP$b.pdf
+rm -f *.ps
+cowsay "and boom goes the dynamite."

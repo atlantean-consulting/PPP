@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#		  This program is part of
+#          Paul's Preponderating Prepresser v0.777
+#      (CC) 2016 Rev. Paul T. Fusco-Gessick, SHS JD
+#               <<paul@resurgencepress.net>>
+
+#                  I.F.E.T.  --  I.V.V.S.
+
+learnIt () {
+	echo -n "ISBN to add: "
+	read isbn
+	echo -n "ID to add it to: "
+	read theid
+}
+
+doIt () {
+	calibredb set_metadata --field identifiers\:isbn\:$isbn $theid
+}
+
+learnIt
+doIt
+
+echo -n "AGAIN???!??!   "
+read go
+if [ $go != "Y" -a $go != "y" ]
+	then exit 0;
+else
+	learnIt
+	doIt
+fi
+
