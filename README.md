@@ -86,5 +86,7 @@ Wrote 44 pages, 1374472 bytes
 If you like this software, if you think I'm cool, or otherwise want to get in touch, email [info@neroots.net](mailto:info@neroots.net). If you hate this software or don't think I'm cool, those communications can be routed to `/dev/null`. I'll be sure to check that mailbox periodically.
 
 Yours in Cthulhu,
+
 Paul Fusco-Gessick
-Head Honcho, Atlantean Consulting
+
+Delmar, N.Y. Atlantic Republic
