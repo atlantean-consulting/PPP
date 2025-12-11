@@ -81,6 +81,12 @@ Wrote 44 pages, 1374472 bytes
 
 ... something's gone wrong. Bail out and examine the source file. Chances are, its length isn't a multiple of 4. If there are extra blank pages, strip them out with `pdftk foo.pdf cat x-y output fixed.pdf` or something similar. If you need to add blank pages, those are included. Add them with `pdftk foo.pdf 3pp.pdf cat output fixed.pdf` or something similar.
 
+**Misconfigurated Printers**
+
+You may run into a situation where you're doing everything right, but the printer just. will. not. print. the job. correctly. For this reason, you should *never* print a whole-ass document unless you're *absolutely sure* the printer is going to behave. Start with a test page or two. You can `pdftk foo.pdf cat 1-4 output test.pdf` to see what happens.
+
+A common issue is when the printer refuses to perform a "flip short edge". This will result in the back sides of every page being upside down, thus ruining your good mood. If this happens, dump all yer output files into a working directory and run `pppf`.
+
 **Contact**
 
 If you like this software, if you think I'm cool, or otherwise want to get in touch, email [info@neroots.net](mailto:info@neroots.net). If you hate this software or don't think I'm cool, those communications can be routed to `/dev/null`. I'll be sure to check that mailbox periodically.
