@@ -1,7 +1,7 @@
-#! /usr/bin/env python3
+#!/Users/pf183229/code/ppp/.venv/bin/python3
 
 #		        This program is part of
-#          Paul's Preponderating Prepresser v1.0
+#          Paul's Preponderating Prepresser v1.1
 #            (CC-BY-SA) 2025 era vulgaris, by
 #        The Rev. Paul T. Fusco-Gessick, J.D., SDA
 #                <<paul@neroots.net>>

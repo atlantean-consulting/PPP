@@ -10,16 +10,29 @@ BUT I DIGRESS
 
 **Installation Instructions**
 
-PPP is Linux-only. If you want to port it to Windoze, be my guest. It's written in [Python](https://www.python.org) and assumes you're running `bash` for a shell. Get Python installed on yer system, set up and activate a virtual environment, and do yourself a lil' `pip3 install PyPDF2`.
+PPP runs on Linux and macOS. (If you want to port it to Windoze, be my guest.) It's written in [Python](https://www.python.org) and assumes you're running `bash` for a shell.
 
-Additionally, ensure the following packages are installed on the system, using your package manager of choice:
+**The easy way:** `git` the repo down into a directory of your choice, add it to your `$PATH`, and run the installer:
+
+```bash
+./install.sh
+```
+
+The installer auto-detects your OS and handles everything — system packages and Python dependencies alike. On macOS it uses [Homebrew](https://brew.sh) (installing it first if needed); on Linux it uses `apt`.
+
+**The manual way:** ensure the following are installed on your system:
 * `pdftk`
-* `poppler-utils`
-* `psutils`
-* `ghostscript`
+* `poppler-utils` / `poppler` (provides `pdftops`)
+* `psutils` (provides `psbook` and `pstops`)
+* `ghostscript` (provides `gs` and `ps2pdf`)
 * `cowsay`
 
-Then `git` the repo down into a directory of your choice and add said directory to yer $PATH by whatever method you like. Now you're ready to *PPPartaaaaay!!*
+Then install the Python dependencies:
+```bash
+pip3 install -r requirements.txt
+```
+
+Now you're ready to *PPPartaaaaay!!*
 
 **Quick-Start Guide**
 

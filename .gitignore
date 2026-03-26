@@ -212,6 +212,8 @@ __marimo__/
 
 # extra shizz that we don't want to include
 # ... like output files and such as
+CLAUDE.md
+.venv/
 *-padded.pdf
 *-output/
 sig*.pdf

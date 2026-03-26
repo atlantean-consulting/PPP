@@ -1,7 +1,7 @@
-#!/usr/bin/env python3
+#!/Users/pf183229/code/ppp/.venv/bin/python3
 
 #		        This program is part of
-#          Paul's Preponderating Prepresser v1.0
+#          Paul's Preponderating Prepresser v1.1
 #            (CC-BY-SA) 2025 era vulgaris, by
 #        The Rev. Paul T. Fusco-Gessick, J.D., SDA
 #                <<paul@neroots.net>>
@@ -432,7 +432,7 @@ def combine_signatures(output_dir):
 def main():
     """Main workflow orchestrator."""
     print('=' * 60)
-    print("PAUL'S PREPONDERATING PREPRESSER v1.0")
+    print("PAUL'S PREPONDERATING PREPRESSER v1.1")
     print('Automated Workflow for Signature Preparation')
     print('=' * 60)
     print()
@@ -556,11 +556,17 @@ def main():
 
             except subprocess.CalledProcessError as e:
                 print('ERROR: ghostscript (gs) failed to resize PDF')
-                print('Make sure ghostscript is installed: sudo apt install ghostscript')
+                if sys.platform == 'darwin':
+                    print('Make sure ghostscript is installed: brew install ghostscript')
+                else:
+                    print('Make sure ghostscript is installed: sudo apt install ghostscript')
                 sys.exit(1)
             except FileNotFoundError:
                 print('ERROR: ghostscript (gs) not found')
-                print('Install it with: sudo apt install ghostscript')
+                if sys.platform == 'darwin':
+                    print('Install it with: brew install ghostscript')
+                else:
+                    print('Install it with: sudo apt install ghostscript')
                 sys.exit(1)
 
         print()
