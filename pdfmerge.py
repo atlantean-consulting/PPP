@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/Users/pf183229/code/ppp/.venv/bin/python3
 
 import sys
 import argparse
@@ -41,4 +41,4 @@ def process_arguments(args):
 
 if __name__ == "__main__":
     args = process_arguments(sys.argv[1:])
-	pdf_merge(args.inputs, args.output, args.delete)
+    pdf_merge(args.inputs, args.output, args.delete)
