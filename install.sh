@@ -70,23 +70,36 @@ case "$OS" in
 esac
 
 echo ""
-echo "Setting up Python virtual environment..."
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-python3 -m venv "$SCRIPT_DIR/.venv"
-"$SCRIPT_DIR/.venv/bin/pip" install --quiet -r "$SCRIPT_DIR/requirements.txt"
-echo "Python dependencies installed."
+echo "Installing pipx (if needed)..."
+if ! command -v pipx &>/dev/null; then
+    if [ "$OS" = "Darwin" ]; then
+        brew install pipx
+    else
+        sudo apt-get install -y pipx
+    fi
+    pipx ensurepath
+fi
 
 echo ""
-echo "Updating script interpreters to use virtual environment..."
-VENV_PYTHON="$SCRIPT_DIR/.venv/bin/python3"
-for script in ppp.py ppp-pad.py printydump.py pdfmerge.py; do
-    f="$SCRIPT_DIR/$script"
-    [ -f "$f" ] && perl -pi -e "s|^#!.*python.*|#!$VENV_PYTHON|" "$f" && echo "  Updated $script"
-done
+echo "Installing PPP via pipx..."
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+pipx install "$SCRIPT_DIR" --force
 
 echo ""
 echo "======================================================"
 echo "  Installation complete!"
 echo ""
-echo "  Run ./ppp.py to start the workflow."
+echo "  Commands available system-wide:"
+echo "    ppp           - Main workflow orchestrator"
+echo "    printydump    - Manual signature splitter"
+echo "    ppp-pad       - PDF padding utility"
+echo "    pdfmerge      - PDF merger"
+echo "    singledingle  - 2-up imposition"
+echo "    flippar       - Page flip fixer"
+echo "    fppp          - Batch singledingle"
+echo "    pppf          - Batch flippar"
+echo "    impose-4up    - 4-up imposition"
+echo "    isbnner       - Calibre ISBN setter"
+echo ""
+echo "  Run 'ppp' to start the workflow."
 echo "======================================================"

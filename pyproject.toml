@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ppp-prepress"
+version = "1.1.0"
+description = "Paul's Preponderating Prepresser - PDF prepress toolkit for signature-based book printing"
+readme = "README.md"
+license = {text = "CC-BY-SA-4.0"}
+requires-python = ">=3.9"
+authors = [
+    {name = "Paul T. Fusco-Gessick", email = "paul@neroots.net"},
+]
+dependencies = [
+    "PyPDF2",
+    "pdftools",
+]
+
+[project.scripts]
+ppp = "ppp.workflow:main"
+ppp-pad = "ppp.pad:main"
+printydump = "ppp.printydump:main"
+pdfmerge = "ppp.merge:main"
+singledingle = "ppp.shell:singledingle_main"
+flippar = "ppp.shell:flippar_main"
+fppp = "ppp.shell:fppp_main"
+pppf = "ppp.shell:pppf_main"
+impose-4up = "ppp.shell:impose_4up_main"
+isbnner = "ppp.shell:isbnner_main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"ppp.data" = ["*.pdf"]

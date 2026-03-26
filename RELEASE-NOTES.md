@@ -1,4 +1,15 @@
 # Release Notes
+... for version 1.1.1
+
+* **Repackaged as a proper Python package** (`ppp-prepress`). Install system-wide with `pipx install .` — no more hardcoded shebangs, no more PATH hacks, no more venv activation. Works identically on macOS and Linux.
+* All bash scripts (singledingle, flippar, fppp, pppf, impose-4up, isbnner) rewritten as Python entry points. One `pipx install` gives you everything.
+* Padding PDFs (1pp.pdf through 7pp.pdf, 1LTRpp.pdf) bundled as package data via `importlib.resources`. They resolve automatically no matter where you run the commands from.
+* `install.sh` updated to use `pipx` instead of manually creating venvs and rewriting shebangs.
+* Old standalone scripts moved to `old/` for reference.
+
+---
+
+# Release Notes
 ... for version 1.1
 
 * Added macOS support. PPP now runs on Linux *and* macOS out of the box.

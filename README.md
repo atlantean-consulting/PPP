@@ -12,13 +12,18 @@ BUT I DIGRESS
 
 PPP runs on Linux and macOS. (If you want to port it to Windoze, be my guest.) It's written in [Python](https://www.python.org) and assumes you're running `bash` for a shell.
 
-**The easy way:** `git` the repo down into a directory of your choice, add it to your `$PATH`, and run the installer:
+**The easy way:** `git` the repo down and run the installer:
 
 ```bash
 ./install.sh
 ```
 
-The installer auto-detects your OS and handles everything — system packages and Python dependencies alike. On macOS it uses [Homebrew](https://brew.sh) (installing it first if needed); on Linux it uses `apt`.
+The installer auto-detects your OS and handles everything — system packages via Homebrew (macOS) or apt (Linux), then installs PPP system-wide via [pipx](https://pipx.pypa.io/). No venvs to manage, no PATH hacking, no shebang headaches. Works identically on both platforms.
+
+**The pipx-only way** (if you already have the system dependencies):
+```bash
+pipx install .
+```
 
 **The manual way:** ensure the following are installed on your system:
 * `pdftk`
@@ -27,9 +32,9 @@ The installer auto-detects your OS and handles everything — system packages an
 * `ghostscript` (provides `gs` and `ps2pdf`)
 * `cowsay`
 
-Then install the Python dependencies:
+Then install PPP:
 ```bash
-pip3 install -r requirements.txt
+pipx install .
 ```
 
 Now you're ready to *PPPartaaaaay!!*
@@ -58,7 +63,7 @@ You then take the resulting .PDFs and print them. Make sure you have permission 
 
 I've included a couple handy-dandy half-letter size example files (lipsum-8.pdf and lipsum64.pdf) for you to mess around with. Let's use the latter to demonstrate how PPP works.
 
-First, do the `chmod +x ppp.py` to ensure it's executable. Then invoke it. You should be able to just `ppp.py` and have it work, but you might have to use `python3 ppp.py` . Try it both ways.
+After installing, just type `ppp` from anywhere on your system. No `chmod`, no `python3`, no `./` needed.
 
 lipsum64.pdf is already the correct size, but if it weren't, PPP will resize it for you. *N.B.:* PPP doesn't change the aspect ratio of the pages - it simply shrinks them to fit. You'll probably end up with whitespace at the top and bottom of the pages. If this bugs you, grab a guillotine cutter and trim the excess after printing. You can also fork the code and fix it yourself. (That don't buffront me, long as I get *my* money next Friday.)
 
@@ -74,7 +79,17 @@ And that's it!
 
 **Standalone Tools**
 
-If you don't need to run the whole workflow, you can invoke the components separately. `ppp-pad.py` adds blank pages so the signatures divide correctly. `printydump.py` splits the file into signatures. `singledingle` (a `bash` script) imposes a single signature 2-up. `fppp` (another `bash` script) is a wrapper that runs `singledingle` on all the files in a directory.
+If you don't need to run the whole workflow, you can invoke the components separately. All commands are installed system-wide:
+
+* `ppp-pad` — adds blank pages so the signatures divide correctly
+* `printydump` — splits the file into signatures
+* `singledingle` — imposes a single signature 2-up
+* `fppp` — runs `singledingle` on all PDFs in the current directory
+* `flippar` — fixes upside-down back pages from misconfigurated printers
+* `pppf` — runs `flippar` on all PDFs in the current directory
+* `pdfmerge` — merges multiple PDFs into one
+* `impose-4up` — 4-up imposition
+* `isbnner` — sets ISBN metadata in Calibre
 
 **Troubleshooting**
 
