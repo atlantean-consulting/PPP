@@ -94,7 +94,7 @@ def flippar(filename):
     _run(['pdftops', '-level3', '-origpagesizes', filename, f'{base}.ps'])
 
     print(' ... reticulating splines ...')
-    _run(['pstops', '2:0,1U', f'{base}.ps', f'i{base}.ps'])
+    _run(['pstops', '2:0,1U(1w,1h)', f'{base}.ps', f'i{base}.ps'])
 
     print(' ... re.PDFenating ...')
     _run(['ps2pdf', f'i{base}.ps', f'{base}-fixed.pdf'])
